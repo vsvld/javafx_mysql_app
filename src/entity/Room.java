@@ -1,8 +1,6 @@
 package entity;
 
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 
 /**
  * @author Vsevolod Al'okhin
@@ -17,6 +15,17 @@ public class Room {
     private DoubleProperty workedHours;
     private DoubleProperty energyConsumption;
 
+    public Room() {
+        id = new SimpleIntegerProperty();
+        name = new SimpleStringProperty();
+        pc1number = new SimpleIntegerProperty();
+        pc2number = new SimpleIntegerProperty();
+        pc1power = new SimpleDoubleProperty();
+        pc2power = new SimpleDoubleProperty();
+        workedHours = new SimpleDoubleProperty();
+        energyConsumption = new SimpleDoubleProperty();
+    }
+
     public Room(IntegerProperty id, StringProperty name, IntegerProperty pc1number, IntegerProperty pc2number,
                 DoubleProperty pc1power, DoubleProperty pc2power, DoubleProperty workedHours) {
         this.id = id;
@@ -26,6 +35,7 @@ public class Room {
         this.pc1power = pc1power;
         this.pc2power = pc2power;
         this.workedHours = workedHours;
+        energyConsumption = calculateEnergyConsumption();
     }
 
     public int getId() {
@@ -110,6 +120,14 @@ public class Room {
 
     public void setWorkedHours(double workedHours) {
         this.workedHours.set(workedHours);
+    }
+
+    public double getEnergyConsumption() {
+        return energyConsumption.get();
+    }
+
+    public DoubleProperty energyConsumptionProperty() {
+        return energyConsumption;
     }
 
     private DoubleProperty calculateEnergyConsumption() {
