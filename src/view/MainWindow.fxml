@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.input.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.*?>
-<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MainWindowController">
+
+<BorderPane prefHeight="400.0" prefWidth="679.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MainWindowController">
    <top>
       <VBox BorderPane.alignment="CENTER">
          <children>
@@ -16,9 +20,18 @@
                            <accelerator>
                               <KeyCodeCombination alt="UP" code="I" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                            </accelerator></MenuItem>
-                        <MenuItem mnemonicParsing="false" onAction="#handleDelete" text="Delete" />
-                    <MenuItem mnemonicParsing="false" onAction="#handleEdit" text="Edit..." />
-                        <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Close" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleDelete" text="Delete">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="D" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator></MenuItem>
+                    <MenuItem mnemonicParsing="false" onAction="#handleEdit" text="Edit...">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="E" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator></MenuItem>
+                        <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Close">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="Q" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator></MenuItem>
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
@@ -30,9 +43,18 @@
             </MenuBar>
             <ToolBar prefHeight="40.0" prefWidth="200.0">
               <items>
-                  <Button mnemonicParsing="false" onAction="#handleAdd" styleClass="addbtn" stylesheets="@../mainpack/application.css" />
-                  <Button layoutX="54.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleEdit" styleClass="edibtn" stylesheets="@../mainpack/application.css" />
-                  <Button layoutX="98.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleDelete" styleClass="deletebtn" stylesheets="@../mainpack/application.css" />
+                  <Button mnemonicParsing="false" onAction="#handleAdd" styleClass="add_btn" stylesheets="@../main/application.css">
+                     <tooltip>
+                        <Tooltip text="Add computer room" />
+                     </tooltip></Button>
+                  <Button layoutX="54.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleEdit" styleClass="edit_btn" stylesheets="@../main/application.css">
+                     <tooltip>
+                        <Tooltip text="Edit selected computer room" />
+                     </tooltip></Button>
+                  <Button layoutX="98.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleDelete" styleClass="delete_btn" stylesheets="@../main/application.css">
+                     <tooltip>
+                        <Tooltip text="Delete selected computer room" />
+                     </tooltip></Button>
               </items>
             </ToolBar>
          </children>
@@ -41,13 +63,15 @@
     <center>
       <ScrollPane fitToHeight="true" fitToWidth="true" BorderPane.alignment="CENTER">
          <content>
-            <TableView fx:id="personTable" prefHeight="237.0" prefWidth="416.0">
+            <TableView fx:id="roomTable" prefHeight="237.0" prefWidth="416.0">
               <columns>
-                <TableColumn fx:id="firstNameColumn" prefWidth="75.0" text="First Name" />
-                <TableColumn fx:id="lastNameColumn" prefWidth="75.0" text="Last Name" />
-                  <TableColumn fx:id="subject1Column" prefWidth="75.0" text="Subject 1" />
-                  <TableColumn fx:id="subject2Column" prefWidth="75.0" text="Subject 2" />
-                  <TableColumn fx:id="averageColumn" prefWidth="75.0" text="Average" />
+                <TableColumn fx:id="roomNameColumn" prefWidth="75.0" text="Computer Room" />
+                <TableColumn fx:id="pc1numberColumn" prefWidth="75.0" text="Computers 1" />
+                  <TableColumn fx:id="pc1powerColumn" prefWidth="75.0" text="Power 1" />
+                  <TableColumn fx:id="pc2numberColumn" prefWidth="75.0" text="Computers 2" />
+                  <TableColumn fx:id="pc2powerColumn" prefWidth="75.0" text="Power 2" />
+                  <TableColumn fx:id="workedHoursColumn" prefWidth="75.0" text="Worked hours" />
+                  <TableColumn fx:id="energyConsumptionColumn" prefWidth="75.0" text="Energy Consumption" />
               </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -68,18 +92,18 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Group Average Mark in Subject 1 " GridPane.columnSpan="2">
+            <Label text="Average power consumption" GridPane.columnSpan="2">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <TextField fx:id="groupAverage1Field" editable="false" GridPane.columnIndex="1" />
-            <Label layoutX="10.0" layoutY="17.0" text="Group Average Mark in Subject 2" GridPane.columnSpan="2" GridPane.rowIndex="1">
+            <TextField fx:id="centerAverageConsumptionField" editable="false" GridPane.columnIndex="1" />
+            <Label layoutX="10.0" layoutY="17.0" text="Total power consumption" GridPane.columnSpan="2" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <TextField fx:id="groupAverage2Field" editable="false" layoutX="210.0" layoutY="13.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="centerWholeConsumptionField" editable="false" layoutX="210.0" layoutY="13.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
          <BorderPane.margin>
             <Insets />

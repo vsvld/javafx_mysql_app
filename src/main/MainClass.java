@@ -18,7 +18,7 @@ public class MainClass extends Application {
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("Students Marks");
+        this.primaryStage.setTitle("Computer center energy consumption");
         initMainWindow();        
     }
 
@@ -34,9 +34,9 @@ public class MainClass extends Application {
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
-         // Give the controller access to the main app.
+            // Give the controller access to the main app.
             MainWindowController mainController = loader.getController();
-//            mainController.setMainApp(this);
+            mainController.setMainApp(this);
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();

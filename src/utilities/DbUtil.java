@@ -31,16 +31,16 @@ public class DbUtil {
         }
     }
 
-    private static void createConnection() {
+    private static void createConnection() throws SQLException {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection(connectionString);
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    public static Connection getConnection() {
+    public static Connection getConnection() throws SQLException {
         if (con == null) createConnection();
         return con;
     }

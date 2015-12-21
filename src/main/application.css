@@ -4,19 +4,18 @@
     -fx-border-radius:10;
     -fx-border-width: 2          
 }
-
-.openbtn {          
-    -fx-graphic: url(../Icons/open-icon.png);   
+.open_btn {
+    -fx-graphic: url(../icons/open-icon.png);
 }
 
-.addbtn {          
-    -fx-graphic: url(../Icons/add-icon.png);   
+.add_btn {
+    -fx-graphic: url(../icons/add-icon.png);
 }
 
-.edibtn {          
-    -fx-graphic: url(../Icons/edit-icon.png);   
+.edit_btn {
+    -fx-graphic: url(../icons/edit-icon.png);
 }
 
-.deletebtn {          
-    -fx-graphic: url(../Icons/delete-icon.png);   
+.delete_btn {
+    -fx-graphic: url(../icons/delete-icon.png);
 }

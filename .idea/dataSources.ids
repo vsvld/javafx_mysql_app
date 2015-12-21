@@ -1,24 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="dataSourceStorage">
   <data-source name="MySQL - computation_center_energy@localhost" uuid="a760a44a-c1b6-47f7-9912-fefb1d37876f">
-    <database-info product="MySQL" version="5.5.46-0ubuntu0.14.04.2" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+    <database-info product="MySQL" version="5.7.10" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
       <extra-name-characters>#@</extra-name-characters>
       <identifier-quote-string>`</identifier-quote-string>
     </database-info>
-    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
-    <schema name="" catalog="computation_center_energy"/>
-    <table name="rooms" schema="" catalog="computation_center_energy" type="TABLE">
-      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="room_name" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
-      <column name="pc_one_number" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
-      <column name="pc_one_power_watts" sqlType="FLOAT" precision="12" scale="0" nullable="false" jdbcType="7"/>
-      <column name="pc_two_number" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
-      <column name="pc_two_power_watts" sqlType="FLOAT" precision="12" scale="0" nullable="false" jdbcType="7"/>
-      <column name="worked_hours" sqlType="FLOAT" precision="12" scale="0" nullable="false" jdbcType="7"/>
-      <column name="energy_consumption" sqlType="FLOAT" precision="12" scale="0" nullable="false" jdbcType="7"/>
-      <primary-key name="PRIMARY" columns="id"/>
-      <index name="unique_id" unique="true" columns="id"/>
-      <index name="unique_room_name" unique="true" columns="room_name"/>
-    </table>
+    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.4">
+      <schema id="1" name="computation_center_energy"/>
+      <table id="2" parent="1" name="rooms"/>
+      <column id="3" parent="2" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="4" parent="2" name="room_name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)</data-type>
+      </column>
+      <column id="5" parent="2" name="pc_one_number">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="6" parent="2" name="pc_one_power_watts">
+        <mandatory>1</mandatory>
+        <data-type>double</data-type>
+      </column>
+      <column id="7" parent="2" name="pc_two_number">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="8" parent="2" name="pc_two_power_watts">
+        <mandatory>1</mandatory>
+        <data-type>double</data-type>
+      </column>
+      <column id="9" parent="2" name="worked_hours">
+        <mandatory>1</mandatory>
+        <data-type>double</data-type>
+      </column>
+      <column id="10" parent="2" name="energy_consumption">
+        <mandatory>1</mandatory>
+        <data-type>double</data-type>
+      </column>
+      <index id="11" parent="2" name="rooms_id_uindex">
+        <columns>id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <index id="12" parent="2" name="rooms_pc_one_power_watts_uindex">
+        <columns>pc_one_power_watts</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <index id="13" parent="2" name="rooms_room_name_uindex">
+        <columns>room_name</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="14" parent="2" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <key id="15" parent="2" name="rooms_id_uindex">
+        <columns>id</columns>
+        <underlying-index>rooms_id_uindex</underlying-index>
+      </key>
+      <key id="16" parent="2" name="rooms_pc_one_power_watts_uindex">
+        <columns>pc_one_power_watts</columns>
+        <underlying-index>rooms_pc_one_power_watts_uindex</underlying-index>
+      </key>
+      <key id="17" parent="2" name="rooms_room_name_uindex">
+        <columns>room_name</columns>
+        <underlying-index>rooms_room_name_uindex</underlying-index>
+      </key>
+    </database-model>
   </data-source>
 </component>
